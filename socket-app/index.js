@@ -1,7 +1,6 @@
 const express = require('express');
 const socketIo = require('socket.io');
 const http = require('http');
-//const {useEffect} = require("react");
 const app = express();
 const server = http.createServer(app);
 const io = socketIo(server,{
@@ -74,7 +73,6 @@ io.on('connection',(socket)=>{
         // remove user from active users
         activeUsers = activeUsers.filter((arrayValue)=> arrayValue.socketId !== socket.id);
         console.log("User Disconnected", activeUsers);
-
 
         // send all active users to new user
         io.emit('get-users',activeUsers);
